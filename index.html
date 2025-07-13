@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsenii Plaksin - Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-navy: #0a192f;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --navy-shadow: rgba(2,12,27,0.7);
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --white: #e6f1ff;
+            --green: #64ffda;
+            --green-tint: rgba(100,255,218,0.1);
+            --font-sans: 'EB Garamond', serif;
+            --font-mono: 'Space Mono', monospace;
+            --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+            --sidebar-width: 43%; /* Увеличена ширина на 3% */
+            --content-width: 57%; /* Соответственно уменьшена */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)),
+                url('https://images.wallpaperscraft.ru/image/single/moraine_lake_alberta_kanada_93615_3840x2400.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--slate);
+            font-family: var(--font-sans);
+            font-size: 18px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Левая панель - ОБНОВЛЕННЫЕ СТИЛИ */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(17, 34, 64, 0.8), rgba(17, 34, 64, 0.75));
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(100, 255, 218, 0.1);
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            text-align: left; /* Выравнивание по левому краю */
+        }
+
+        .sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 0 15px;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 28px; /* Уменьшенный размер */
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+            text-align: center; /* Логотип по центру */
+        }
+
+        /* Инициалы в верхнем левом углу */
+        .initials-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: var(--font-mono);
+            font-size: 32px; /* Увеличенный размер */
+            font-weight: 700;
+            color: var(--green);
+            letter-spacing: -1px;
+            z-index: 11; /* Чтобы инициалы были поверх всего */
+        }
+
+
+        /* Стиль для информации о разработчике (Имя, специальность, приветствие) */
+        .developer-info {
+            margin-top: 40px; /* Уменьшен отступ */
+            display: block; /* Добавлено для размещения фото и текста в ряд */
+        }
+
+        .developer-info-text {
+            text-align: left;
+        }
+
+        .developer-info-text h1 {
+            font-size: 2.5em; /* Уменьшен размер */
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 5px; /* Уменьшен отступ */
+        }
+
+        .developer-info-text h2 {
+            font-size: 1.6em; /* Уменьшен размер */
+            color: var(--light-slate);
+            margin-bottom: 15px; /* Уменьшен отступ */
+            font-weight: 500;
+        }
+
+        .typing-effect {
+            font-size: 1.2em; /* Уменьшен размер */
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--green);
+            width: 100%; /* Добавлено для корректной работы анимации */
+            animation: typing 4s steps(40) 1s 1 normal both, blink .7s steps(1) infinite;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Навигация в левой панели - ОБНОВЛЕНО */
+        .sidebar nav ul {
+            list-style: none;
+            margin-top: 25px; /* Уменьшен отступ */
+        }
+
+        .sidebar nav li {
+            margin-bottom: 5px; /* Уменьшено */
+        }
+
+        .nav-link {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 15px;
+            color: var(--light-slate);
+            text-decoration: none;
+            padding: 10px 12px; /* Уменьшено */
+            transition: var(--transition);
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--green);
+            background-color: var(--green-tint);
+            transform: translateX(5px);
+        }
+
+        /* Подсветка активной ссылки как на скриншоте */
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background-color: var(--green);
+        }
+
+        /* Социальные иконки */
+        .social-links {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--light-slate);
+            font-size: 20px;
+            transition: var(--transition);
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            background: var(--lightest-navy);
+        }
+
+        .social-links a:hover {
+            color: var(--green);
+            transform: translateY(-3px);
+            background: var(--green-tint);
+        }
+
+        /* Правая область контента - БЕЗ ИЗМЕНЕНИЙ */
+        .content {
+            width: var(--content-width);
+            margin-left: var(--sidebar-width);
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            position: relative;
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Заголовки разделов */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 24px;
+            color: var(--green);
+            margin-right: 15px;
+            font-weight: 400;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--white);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--lightest-navy);
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
+        /* Контент разделов */
+        .section-content {
+            padding-left: 30px;
+        }
+
+        /* Секция "О себе" */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--slate);
+            font-size: 18px;
+        }
+
+        .about-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(to bottom right, var(--light-navy), var(--lightest-navy));
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid var(--lightest-navy);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--green);
+        }
+
+        .feature-card i {
+            font-size: 24px;
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--white);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Опыт */
+        .experience-item {
+            margin-bottom: 50px;
+            position: relative;
+            padding-left: 30px;
+            background: linear-gradient(to bottom right, var(--light-navy), var(--lightest-navy));
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--lightest-navy);
+            transition: var(--transition);
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .experience-header h3 {
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .date {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            color: var(--green);
+        }
+
+        .position {
+            font-family: var(--font-mono);
+            color: var(--light-slate);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .section-content ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-content li {
+            margin-bottom: 12px;
+            position: relative;
+            color: var(--slate);
+            font-size: 18px;
+            padding-left: 15px;
+        }
+
+        .section-content li::before {
+            content: "▹";
+            color: var(--green);
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            top: -2px;
+        }
+
+        /* Образование */
+        .education-item {
+            margin-bottom: 40px;
+            background: linear-gradient(to bottom right, var(--light-navy), var(--lightest-navy));
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--lightest-navy);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .education-header h3 {
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .degree {
+            font-family: var(--font-mono);
+            color: var(--light-slate);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        /* Навыки */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .skills-category {
+            background: linear-gradient(to bottom right, var(--light-navy), var(--lightest-navy));
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--lightest-navy);
+            transition: var(--transition);
+        }
+
+        .skills-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .skills-category h3 {
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--lightest-navy);
+            color: var(--green);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-family: var(--font-mono);
+            transition: var(--transition);
+            margin-bottom: 10px;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            background-color: var(--green-tint);
+        }
+
+        .languages-section {
+            background: linear-gradient(to bottom right, var(--light-navy), var(--lightest-navy));
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--lightest-navy);
+            transition: var(--transition);
+        }
+
+        .languages-section:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .languages-section h3 {
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .language-levels {
+            display: grid;
+            gap: 20px;
+        }
+
+        .language {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .language-name {
+            font-size: 18px;
+            color: var(--light-slate);
+            margin-bottom: 10px;
+        }
+
+        .language-level {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--lightest-navy);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--green);
+        }
+
+        /* Достижения */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(to bottom right, var(--light-navy), var(--lightest-navy));
+            padding: 30px;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid var(--lightest-navy);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--green);
+        }
+
+        .achievement-icon {
+            font-size: 32px;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+
+        .achievement-card h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .achievement-card p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--slate);
+        }
+
+        .achievement-card a {
+            color: var(--green);
+            font-family: var(--font-mono);
+            font-size: 16px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .achievement-card a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--green);
+            transition: var(--transition);
+        }
+
+        .achievement-card a:hover::after {
+            width: 100%;
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 50px 0 20px;
+            color: var(--slate);
+            font-family: var(--font-mono);
+            font-size: 16px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 30px;
+                border-right: none;
+                border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+                text-align: center; /* Центрируем на мобильных */
+            }
+
+            .content {
+                width: 100%;
+                margin-left: 0;
+                padding: 50px 0;
+            }
+
+            .logo {
+                margin-bottom: 30px;
+            }
+
+            .social-links {
+                margin-top: 40px;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .section-content {
+                padding-left: 0;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --sidebar-width: 100%;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .divider {
+                display: none;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Левая фиксированная панель - ОБНОВЛЕНО -->
+    <aside class="sidebar">
+        <div class="sidebar-inner">
+            <!-- Инициалы -->
+            <div class="initials-container">AP</div>
+
+            <!-- Информация о разработчике -->
+            <div class="developer-info">
+                <!-- Текстовая информация -->
+                <div class="developer-info-text">
+                    <h1>Arsenii Plaksin</h1>
+                    <h2>Full-Stack Developer</h2>
+                    <p class="typing-effect">Hello! I'm Arsenii Plaksin, a 15-year-old Full-Stack developer.</p>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                </ul>
+            </nav>
+
+            <div class="social-links">
+                <a href="mailto:mikalsonl61@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="mailto:arsenyarseny2021@mail.ru" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:+79302760696" aria-label="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://t.me/Plaksin_Arsenii" target="_blank" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://wa.me/89302760696" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://github.com/PlaksinArsenii" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/plaksin_arsenii2010" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/Arsenii%20Plaksin" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://leetcode.com/u/IMaddition/" target="_blank" aria-label="LeetCode">
+                    <i class="fas fa-code"></i>
+                </a>
+                <a href="https://codeforces.com/profile/PL_Klaus" target="_blank" aria-label="Codeforces">
+                    <i class="fas fa-chart-line"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Правая прокручиваемая область - БЕЗ ИЗМЕНЕНИЙ -->
+    <main class="content">
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">01.</span>
+                    <h2>About Me</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="section-content">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>My name is Arsenii Plaksin, and I am a passionate Full-Stack developer with over 5 years of experience at the age of 15. My love for programming has led me to diverse experiences and interesting projects. Besides development, I am also fond of judo, holding a green belt and a 1st youth rank, having practiced this sport for 11 years. I also enjoy playing chess, having dedicated 3 years to it and achieving a 2nd youth rank.</p>
+
+                            <p>My journey in IT began at the "Center of Ecology and Biology," where I studied for 5 years and received two diplomas. Then I continued my education at the "IT-CUBA" educational center, where I studied mobile development and Python for two years. I am self-taught, which has allowed me to delve into various aspects of development and constantly improve my skills.</p>
+
+                            <p>Currently, I am interning at Yandex, where I gain valuable experience working with a team of professionals. In addition, I am actively involved in a commercial project, developing my skills in practice.</p>
+                        </div>
+
+                        <div class="about-features">
+                            <div class="feature-card">
+                                <i class="fas fa-laptop-code"></i>
+                                <h3>Development</h3>
+                                <p>5+ years of programming experience</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <i class="fas fa-medal"></i>
+                                <h3>Achievements</h3>
+                                <p>Multiple awards in programming competitions</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h3>Education</h3>
+                                <p>Continuous learning and skill development</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <i class="fas fa-chess-knight"></i>
+                                <h3>Hobbies</h3>
+                                <p>Judo and chess enthusiast</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">02.</span>
+                    <h2>Experience</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="section-content">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3>Yandex</h3>
+                            <span class="date">2025 - Present</span>
+                        </div>
+                        <p class="position">Front-end Developer Intern</p>
+                        <ul>
+                            <li>Working with a professional team on modern web applications</li>
+                            <li>Developing responsive UI components using React</li>
+                            <li>Collaborating with back-end developers on API integration</li>
+                            <li>Gaining valuable experience in a leading tech company</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3>World AI</h3>
+                            <span class="date">2025 - Present</span>
+                        </div>
+                        <p class="position">Full-Stack Developer</p>
+                        <ul>
+                            <li>Developing a neural network for designers and architects</li>
+                            <li>Working in a team of 12 people on a commercial project</li>
+                            <li>Responsible for both front-end and back-end development</li>
+                            <li>Receiving a share of sales from the project</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3>Internship Applications</h3>
+                            <span class="date">2024 - 2025</span>
+                        </div>
+                        <p class="position">Multiple Companies</p>
+                        <ul>
+                            <li>Gazprom: Passed entrance exams but denied due to age</li>
+                            <li>Alfa-Bank: Passed exams but denied due to age</li>
+                            <li>VK: Passed exams but denied due to age</li>
+                            <li>SberBank: Passed exams but denied due to age</li>
+                            <li>Tinkoff: Awaiting results (likely denied due to age)</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3>Kwork</h3>
+                            <span class="date">2020 - 2024</span>
+                        </div>
+                        <p class="position">Freelance Developer</p>
+                        <ul>
+                            <li>Completed first 3 commercial projects</li>
+                            <li>Developed basic web applications for clients</li>
+                            <li>Gained practical experience in client communication</li>
+                            <li>Started my journey in professional programming</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3>Charity Projects</h3>
+                            <span class="date">2022 - 2025</span>
+                        </div>
+                        <p class="position">Volunteer Developer</p>
+                        <ul>
+                            <li>Participated in 7 charity projects including "Sleepyhead"</li>
+                            <li>Contributed to various social initiatives</li>
+                            <li>Gained valuable life experience despite projects not surviving</li>
+                            <li>Learned the importance of sustainable project planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">03.</span>
+                    <h2>Education</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="section-content">
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h3>MBOU "Gymnasium 38"</h3>
+                            <span class="date">2017 - 2028</span>
+                        </div>
+                        <p class="degree">Secondary Education</p>
+                        <ul>
+                            <li>Studying in the 9th grade</li>
+                            <li>Focus on English language and technical subjects</li>
+                            <li>Participating in programming competitions and olympiads</li>
+                            <li>Best school in the city with English specialization</li>
+                        </ul>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h3>IT-CUBA Educational Center</h3>
+                            <span class="date">2023 - 2028</span>
+                        </div>
+                        <p class="degree">Mobile Development & Python</p>
+                        <ul>
+                            <li>Completed 150+ hours of specialized training</li>
+                            <li>Learned fundamentals of mobile app development</li>
+                            <li>Developed Python applications using various libraries</li>
+                            <li>Planning to take chatbot development course next year</li>
+                        </ul>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h3>Center of Ecology and Biology</h3>
+                            <span class="date">2017 - 2022</span>
+                        </div>
+                        <p class="degree">IT Fundamentals</p>
+                        <ul>
+                            <li>Completed 5 years of study (700+ hours)</li>
+                            <li>Received two diplomas in programming fundamentals</li>
+                            <li>Developed foundational programming skills</li>
+                            <li>Starting point of my IT journey</li>
+                        </ul>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h3>Self-Education</h3>
+                            <span class="date">2015 - Present</span>
+                        </div>
+                        <p class="degree">Various Technologies</p>
+                        <ul>
+                            <li>Learned 1C, C++, Swift, Kotlin, JavaScript, React</li>
+                            <li>Completed numerous online courses</li>
+                            <li>Developed personal projects to enhance skills</li>
+                            <li>Constantly exploring new areas in programming</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">04.</span>
+                    <h2>Skills</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="section-content">
+                    <div class="skills-grid">
+                        <div class="skills-category">
+                            <h3>Programming Languages</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">C++</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">C</span>
+                                <span class="skill-tag">Pascal</span>
+                                <span class="skill-tag">1C</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h3>Frameworks & Libraries</h3>
+                            <div class="skill-tags">
+                                <span class="skill-
+<span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">Flask</span>
+                                <span class="skill-tag">NumPy</span>
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">Qt</span>
+                                <span class="skill-tag">STL</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h3>Tools & Technologies</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">REST API</span>
+                                <span class="skill-tag">Linux</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Databases</span>
+                                <span class="skill-tag">Boost</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <h3>Currently Learning</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Kotlin</span>
+                                <span class="skill-tag">Swift</span>
+                                <span class="skill-tag">TensorFlow</span>
+                                <span class="skill-tag">GraphQL</span>
+                                <span class="skill-tag">Scikit-learn</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="languages-section">
+                        <h3>Languages</h3>
+                        <div class="language-levels">
+                            <div class="language">
+                                <span class="language-name">English:</span>
+                                <span class="language-level">B2+</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="language">
+                                <span class="language-name">Russian:</span>
+                                <span class="language-level">C2 (Native)</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">05.</span>
+                    <h2>Achievements</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="section-content">
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Programming Olympiads</h3>
+                            <p>Multiple city-level prizes in programming (2021-2024)</p>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h3>CodeForces</h3>
+                            <p>Active participant with consistent rating improvement</p>
+                            <a href="https://codeforces.com/profile/PL_Klaus" target="_blank">View Profile</a>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>LeetCode</h3>
+                            <p>Solved 150+ problems across various difficulty levels</p>
+                            <a href="https://leetcode.com/u/IMaddition/" target="_blank">View Profile</a>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>National Olympiads</h3>
+                            <p>Participated in olympiads by Sirius, Neymark, Vega, and MSU</p>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-chess"></i>
+                            </div>
+                            <h3>Chess Achievements</h3>
+                            <p>2nd youth rank after 3 years of dedicated practice</p>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Judo Accomplishments</h3>
+                            <p>Green belt and 1st youth rank after 11 years of training</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>Designed & Built by Arsenii Plaksin</p>
+                <p>&copy; 2025 All Rights Reserved</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация появления секций при скролле
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+
+                        // Обновление активной ссылки в навигации
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '-100px 0px -100px 0px'
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Плавная прокрутка для навигации
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+
+                    // Обновление активной ссылки
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Подсветка активного раздела при загрузке страницы
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                const targetLink = document.querySelector(`.nav-link[href="${currentHash}"]`);
+                if (targetLink) {
+                    targetLink.classList.add('active');
+                }
+            } else {
+                navLinks[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
